@@ -6,7 +6,7 @@
 /*   By: ael-qori <ael-qori@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 12:41:55 by ael-qori          #+#    #+#             */
-/*   Updated: 2024/02/25 13:46:46 by ael-qori         ###   ########.fr       */
+/*   Updated: 2024/02/26 10:19:34 by ael-qori         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,12 @@
 #define PWD "PWD"
 #define OLDPWD "OLDPWD"
 
+#define PIPE '|'
+#define INPUT '<'
+#define OUTPUT '>'
+#define APPEND ">>"
+#define HERE_DOC "<<"
+
 /*========================= STRUCT =========================*/
 
 typedef struct s_env
@@ -80,4 +86,16 @@ char	*ft_get_value_env(char *str);
 
 void    ft_handle_sigint(int sig);
 void    ft_signals(void);
+
+
+/*========================= PARSING =========================*/
+int	filter_space_redirections(char *s);
+
+char	*ft_parsing(char *input);
+/*========================= HELPER =========================*/
+int	ft_is_redirection(char c);
+int	ft_get_index_of_next_quotes(char *s, char c,int i);
+void	ft_replace_pipe_and_redirections(char *s, int start, int end);
+char	*ft_get_all_lines(char *input);
+
 #endif

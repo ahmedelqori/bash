@@ -6,7 +6,7 @@
 /*   By: ael-qori <ael-qori@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:04:48 by ael-qori          #+#    #+#             */
-/*   Updated: 2024/02/01 15:20:26 by ael-qori         ###   ########.fr       */
+/*   Updated: 2024/02/25 14:00:52 by ael-qori         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ char			*ft_strnstr(const char *s1, const char *set, size_t n);
 int				ft_atoi(const char *s);
 void			*ft_calloc(size_t nmemb, size_t size);
 char			*ft_strdup(const char *str);
+int				ft_strcmp(char *s1, char *s2);
 
 // PART 2 Mondantory
 

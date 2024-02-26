@@ -7,6 +7,9 @@ SRC = ./src/minishell.c \
 	  ./src/struct/env/ft_env.c\
 	  ./src/buildin/env/ft_env.c\
 	  ./src/signals/ft_signals.c\
+	  ./src/parsing/ft_parsing.c\
+	  ./src/helper/helper_1.c\
+	  ./src/helper/helper_2.c\
 
 OBJ = ${SRC:.c=.o}
 
