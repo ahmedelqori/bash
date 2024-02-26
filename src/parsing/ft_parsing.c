@@ -6,7 +6,7 @@
 /*   By: ael-qori <ael-qori@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 13:59:23 by ael-qori          #+#    #+#             */
-/*   Updated: 2024/02/26 10:35:34 by ael-qori         ###   ########.fr       */
+/*   Updated: 2024/02/26 11:24:49 by ael-qori         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ char	*ft_parsing(char *input)
 	}
 	current = ft_strdup(input);
 	free(input);
+	printf("======= %d =======\n",ft_check_after_redirection_input(current));
 	return (current);
 }

@@ -10,6 +10,7 @@ SRC = ./src/minishell.c \
 	  ./src/parsing/ft_parsing.c\
 	  ./src/helper/helper_1.c\
 	  ./src/helper/helper_2.c\
+	  ./src/parsing/ft_check_syntax_error.c\
 
 OBJ = ${SRC:.c=.o}
 

@@ -6,7 +6,7 @@
 /*   By: ael-qori <ael-qori@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 12:45:08 by ael-qori          #+#    #+#             */
-/*   Updated: 2024/02/26 10:40:13 by ael-qori         ###   ########.fr       */
+/*   Updated: 2024/02/26 10:57:47 by ael-qori         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	minishell(t_env  *env)
 			return ;
 		(void)env;
 		(void)input;
-		
 		current = ft_parsing(input);
 		add_history(current);
 		(void)current;
