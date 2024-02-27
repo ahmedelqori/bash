@@ -6,7 +6,7 @@
 /*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 12:41:55 by ael-qori          #+#    #+#             */
-/*   Updated: 2024/02/27 14:19:00 by meedivo          ###   ########.fr       */
+/*   Updated: 2024/02/27 14:31:35 by meedivo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,9 @@ char	*ft_get_value_env(char *str);
 
 void    ft_handle_sigint(int sig);
 void    ft_signals(void);
+/*========================= FREE =========================*/
 
-
+void    ft_free_arr(char **arr);
 /*========================= PARSING =========================*/
 int	filter_space_redirections(char *s);
 

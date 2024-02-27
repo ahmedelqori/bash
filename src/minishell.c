@@ -6,7 +6,7 @@
 /*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 12:45:08 by ael-qori          #+#    #+#             */
-/*   Updated: 2024/02/27 14:27:06 by meedivo          ###   ########.fr       */
+/*   Updated: 2024/02/27 14:32:26 by meedivo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,8 @@ void	print_arr(char **arr)
 
 	i = 0;
 	while (arr[i])
-	{
-		// printf("(%s)\t",arr[i]);
-		free(arr[i]);
-		i++;
-	}
-	// printf("\n");
-	free(arr);
+		printf("(%s)\t",arr[i++]);
+	printf("\n");
 }
 
 void	minishell(t_env  *env)
@@ -50,6 +45,7 @@ void	minishell(t_env  *env)
 		add_history(input);
 		current = ft_parsing(input);
 		print_arr(current);
+		ft_free_arr(current);
 	}
 }
 

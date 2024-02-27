@@ -11,6 +11,7 @@ SRC = ./src/minishell.c \
 	  ./src/parsing/ft_parsing.c\
 	  ./src/helper/helper_1.c\
 	  ./src/helper/helper_2.c\
+	  ./src/free/free.c\
 	  ./src/parsing/ft_check_syntax_error.c\
 	  ./src/parsing/ft_add_space_to_input.c\
 	  ./src/parsing/ft_add_space_to_output.c\
