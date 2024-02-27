@@ -6,7 +6,7 @@
 /*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 13:59:23 by ael-qori          #+#    #+#             */
-/*   Updated: 2024/02/27 13:06:28 by meedivo          ###   ########.fr       */
+/*   Updated: 2024/02/27 14:21:06 by meedivo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,28 @@ int	filter_space_redirections(char *s)
 	return 0;
 }
 
-void	ft_return_real_value(char *s)
+void	ft_return_real_value(char **arr)
 {
 	int i;
+	int j;
 
 	i = 0;
-	while (s[i])
+	while (arr[i])
 	{
-		if (s[i] < 0)
-			s[i] *= -1;
+		j = 0;		
+		while (arr[i][j])
+		{
+			if (arr[i][j] < 0)
+				arr[i][j] *= -1;
+			j++;
+		}
 		i++;
 	}
 }
 
-char	*ft_all_functions(char *s)
+char	**ft_all_functions(char *s)
 {
+	char	**arr;
 	char	*fix_space_input;
 	char	*fix_space_output;
 	char	*fix_space_pipe;
@@ -59,11 +66,13 @@ char	*ft_all_functions(char *s)
 	free(fix_space_input);
 	fix_space_pipe = ft_add_space_to_pipe(fix_space_output);		
 	free(fix_space_output);
-	ft_return_real_value(fix_space_pipe);
-	return (fix_space_pipe);
+	arr = ft_split(fix_space_pipe, ' ');
+	ft_return_real_value(arr);
+	free(fix_space_pipe);
+	return (arr);
 }
 
-char	*ft_parsing(char *input)
+char	**ft_parsing(char *input)
 {
 	char	*current;
 	int 	res;

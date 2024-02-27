@@ -3,6 +3,7 @@ CC = cc
 RM = rm -rf
 CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address 
 
+
 SRC = ./src/minishell.c \
 	  ./src/struct/env/ft_env.c\
 	  ./src/buildin/env/ft_env.c\
@@ -15,12 +16,14 @@ SRC = ./src/minishell.c \
 	  ./src/parsing/ft_add_space_to_output.c\
 	  ./src/parsing/ft_add_space_to_pipe.c\
 
-OBJ = ${SRC:.c=.o}
 
+OBJ = ${SRC:.c=.o}
 all: ${NAME}
 
 ${NAME}: ${OBJ}
 	${CC} ${CFLAGS} ${SRC}   ./libft/libft.a -o ${NAME} -lreadline
+
+
 clean:
 	${RM} ${OBJ}
 

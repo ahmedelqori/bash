@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-qori <ael-qori@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 12:45:08 by ael-qori          #+#    #+#             */
-/*   Updated: 2024/02/26 10:57:47 by ael-qori         ###   ########.fr       */
+/*   Updated: 2024/02/27 14:27:06 by meedivo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,25 @@
 		- [o] create Prompt
 */
 
+void	print_arr(char **arr)
+{
+	int i;
+
+	i = 0;
+	while (arr[i])
+	{
+		// printf("(%s)\t",arr[i]);
+		free(arr[i]);
+		i++;
+	}
+	// printf("\n");
+	free(arr);
+}
+
 void	minishell(t_env  *env)
 {
 	char	*input;
-	char	*current;
+	char	**current;
 
 	while  (1)
 	{
@@ -32,11 +47,9 @@ void	minishell(t_env  *env)
 			return ;
 		(void)env;
 		(void)input;
+		add_history(input);
 		current = ft_parsing(input);
-		add_history(current);
-		printf("%s\n",current);
-		(void)current;
-		free(current);
+		print_arr(current);
 	}
 }
 

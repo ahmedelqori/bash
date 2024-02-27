@@ -6,7 +6,7 @@
 /*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 12:41:55 by ael-qori          #+#    #+#             */
-/*   Updated: 2024/02/27 12:57:08 by meedivo          ###   ########.fr       */
+/*   Updated: 2024/02/27 14:19:00 by meedivo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,19 @@ typedef struct s_env
 	struct s_env *next;
 } t_env;
 
+typedef struct s_tree
+{
+    char			*command;
+    struct s_tree	*left;
+    struct s_tree	*right;
+} t_tree;
+
+typedef struct s_list_pipe
+{
+    t_tree  			*root;
+    struct s_list_pipe	*next;
+}	t_list_pipe;
+
 
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
@@ -91,7 +104,7 @@ void    ft_signals(void);
 /*========================= PARSING =========================*/
 int	filter_space_redirections(char *s);
 
-char	*ft_parsing(char *input);
+char	**ft_parsing(char *input);
 /*========================= HELPER =========================*/
 int	ft_is_redirection(char c);
 int	ft_get_index_of_next_quotes(char *s, char c,int i);
