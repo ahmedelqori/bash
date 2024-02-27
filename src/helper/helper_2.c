@@ -20,6 +20,8 @@ char	*ft_get_all_lines(char *input)
 	while (filter_space_redirections(input) == -1)
 	{
 		tmp = readline("> ");
+		if (tmp == NULL)
+			break;
 		current = ft_strjoin(input, "\n");
 		free(input);
 		input = ft_strjoin(current, tmp);

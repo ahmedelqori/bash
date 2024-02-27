@@ -34,6 +34,7 @@ void	minishell(t_env  *env)
 		(void)input;
 		current = ft_parsing(input);
 		add_history(current);
+		printf("%s\n",current);
 		(void)current;
 		free(current);
 	}

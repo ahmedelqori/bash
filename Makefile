@@ -18,7 +18,6 @@ all: ${NAME}
 
 ${NAME}: ${OBJ}
 	${CC} ${CFLAGS} ${SRC}   ./libft/libft.a -o ${NAME} -lreadline
-
 clean:
 	${RM} ${OBJ}
 

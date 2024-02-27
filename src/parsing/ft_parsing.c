@@ -48,6 +48,6 @@ char	*ft_parsing(char *input)
 	}
 	current = ft_strdup(input);
 	free(input);
-	printf("======= %d =======\n",ft_check_after_redirection_input(current));
+	// printf("======= %d =======\n",ft_check_after_redirection_input(current));
 	return (current);
 }
