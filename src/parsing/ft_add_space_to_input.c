@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_add_space_to_pipe.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ael-qori <ael-qori@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/27 12:55:37 by meedivo           #+#    #+#             */
-/*   Updated: 2024/02/27 12:56:31 by meedivo          ###   ########.fr       */
+/*   Created: 2024/02/26 09:28:18 by ael-qori          #+#    #+#             */
+/*   Updated: 2024/02/26 09:29:15 by ael-qori         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-
-int	ft_count_space_pipe(char *s)
+int	ft_count_space_input(char *s)
 {
 	int	i;
 	int	count;
@@ -22,25 +21,23 @@ int	ft_count_space_pipe(char *s)
 	count = 0;
 	while (s[i])
 	{
-		if (i == 0 && s[i] == PIPE && s[i + 1 ]&& s[i + 1] != 32 )
+		if (s[i] == INPUT && s[i + 1] && s[i + 1] != 32 && s[i + 1] != INPUT)
 			count++;
-		if (i != 0 && s[i] == PIPE && s[i - 1] != 32)
-			count++;
-		if (i != 0 && s[i] == PIPE && s[i + 1] && s[i + 1] != 32)
+		if (i != 0 && s[i] == INPUT && s[i - 1] != 32 && s[i - 1] != INPUT)
 			count++;
 		i++;
 	}
 	return (count);
 }
 
-char	*ft_add_space_to_pipe(char *s)
+char	*ft_add_space_to_input(char *s)
 {
 	int	len;
 	int	i;
 	int j;
 	char *new;
 
-	len = ft_strlen(s) + ft_count_space_pipe(s);
+	len = ft_strlen(s) + ft_count_space_input(s);
 	new = malloc(sizeof(char) * (len + 1));
 	if(new == NULL )
 		return (NULL);
@@ -49,20 +46,18 @@ char	*ft_add_space_to_pipe(char *s)
 	int tmp = 0;
 	while (s[i])
 	{
-		if (s[i] != PIPE)
-		{
+		if (s[i] != INPUT)
 			new[j] = s[i];
-		}
 		else
 		{
 			tmp = j;
-			if (i != 0 && s[i - 1] != 32)
+			if (i != 0 && s[i] == INPUT && s[i - 1] != 32 && s[i - 1] != INPUT)
 			{
 				new[j] = ' ';
 				j++;
 				new[j] = s[i];
 			}
-			if (s[i + 1] && s[i + 1] != 32)
+			if (s[i] == INPUT && s[i + 1] && s[i + 1] != 32 && s[i + 1] != INPUT)
 			{
 				new[j] = s[i];
 				j++;
@@ -71,9 +66,9 @@ char	*ft_add_space_to_pipe(char *s)
 			if (tmp == j)
 				new[j] = s[i];
 		}
-		j++;
 		i++;
+		j++;
 	}
-	new[j] = 0;
+	new[len] = 0;
 	return (new);
 }

@@ -11,6 +11,9 @@ SRC = ./src/minishell.c \
 	  ./src/helper/helper_1.c\
 	  ./src/helper/helper_2.c\
 	  ./src/parsing/ft_check_syntax_error.c\
+	  ./src/parsing/ft_add_space_to_input.c\
+	  ./src/parsing/ft_add_space_to_output.c\
+	  ./src/parsing/ft_add_space_to_pipe.c\
 
 OBJ = ${SRC:.c=.o}
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-qori <ael-qori@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 12:41:55 by ael-qori          #+#    #+#             */
-/*   Updated: 2024/02/26 11:24:09 by ael-qori         ###   ########.fr       */
+/*   Updated: 2024/02/27 12:57:08 by meedivo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,9 @@ int	ft_get_index_of_next_quotes(char *s, char c,int i);
 void	ft_replace_pipe_and_redirections(char *s, int start, int end);
 char	*ft_get_all_lines(char *input);
 int ft_check_after_redirection_input(char *s);
+
+char	*ft_add_space_to_pipe(char *s);
+char	*ft_add_space_to_output(char *s);
+char	*ft_add_space_to_input(char *s);
 
 #endif
