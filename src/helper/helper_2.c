@@ -6,7 +6,7 @@
 /*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:13:06 by ael-qori          #+#    #+#             */
-/*   Updated: 2024/02/28 13:49:50 by meedivo          ###   ########.fr       */
+/*   Updated: 2024/02/28 15:16:51 by meedivo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ char	*ft_get_all_lines(char *input)
 void	tree_help(t_tree *tree, t_list **list, int *output,int *input )
 {
 	t_tree	*root;
+	char	*current;
+	char	*tmp;
+	char	*line;
 	int fd;
 
 	root = (tree);
@@ -58,9 +61,25 @@ void	tree_help(t_tree *tree, t_list **list, int *output,int *input )
 		}
 		if (root->left && root->command[0] == INPUT)
 		{
-			fd = open(root->left->command,O_RDONLY,0777);
-			if (fd != -1)
-				*input = fd;
+			if (ft_strlen(root->command) == 1)
+			{
+				fd = open(root->left->command,O_RDONLY,0777);
+				if (fd != -1)
+					*input = fd;
+			}
+			if (strcmp(root->command, HERE_DOC) == 0)
+			{
+				tmp = "";
+				while ((line = readline("HereDoc $> ")))
+				{
+					if (ft_strcmp(line, root->left->command) == 0)
+						break;
+					current = ft_strjoin(line, "\n");
+					line = tmp;
+					tmp = ft_strjoin(tmp , current);	
+				}
+				write(*output, tmp, ft_strlen(tmp));
+			}
 		}
 	}
 	if (root->command[0] != OUTPUT && root->command[0] != INPUT)
