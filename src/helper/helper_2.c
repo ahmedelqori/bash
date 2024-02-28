@@ -6,7 +6,7 @@
 /*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:13:06 by ael-qori          #+#    #+#             */
-/*   Updated: 2024/02/28 13:08:30 by meedivo          ###   ########.fr       */
+/*   Updated: 2024/02/28 13:49:50 by meedivo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,18 @@ void	tree_help(t_tree *tree, t_list **list, int *output,int *input )
 	{
 		if (root->left && root->command[0] == OUTPUT)
 		{
-			fd = open(root->left->command,O_CREAT|O_WRONLY|O_TRUNC,0777);
-			if (fd != -1)
-				*output = fd;
+			if (ft_strlen(root->command) == 1)
+			{
+				fd = open(root->left->command,O_CREAT|O_WRONLY|O_TRUNC,0777);
+				if (fd != -1)
+					*output = fd;
+			}
+			if (ft_strcmp(root->command, APPEND) == 0)
+			{
+				fd = open(root->left->command,O_CREAT|O_WRONLY|O_APPEND,0777);
+				if (fd != -1)
+					*output = fd;	
+			}
 		}
 		if (root->left && root->command[0] == INPUT)
 		{
