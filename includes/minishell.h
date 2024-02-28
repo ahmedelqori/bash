@@ -6,7 +6,7 @@
 /*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 12:41:55 by ael-qori          #+#    #+#             */
-/*   Updated: 2024/02/27 14:31:35 by meedivo          ###   ########.fr       */
+/*   Updated: 2024/02/28 13:35:08 by meedivo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,20 @@ int	ft_get_index_of_next_quotes(char *s, char c,int i);
 void	ft_replace_pipe_and_redirections(char *s, int start, int end);
 char	*ft_get_all_lines(char *input);
 int ft_check_after_redirection_input(char *s);
-
+void	tree_help(t_tree *tree, t_list **list, int *output,int *input );
 char	*ft_add_space_to_pipe(char *s);
 char	*ft_add_space_to_output(char *s);
 char	*ft_add_space_to_input(char *s);
 
+/*========================= TREE =========================*/
+t_tree *ft_new_tree(char *command);
+void    ft_tree_insert(t_tree **root, t_tree *new);
+
+/*========================= pipe =========================*/
+
+t_list_pipe	*ft_create_list(char	**arr);
+
+void    ft_execution(char **arr);
+void    ft_handle_child(t_list_pipe *lst, int *files , char **args, int *fd);
+void    ft_close_all_files(int *fd, int *files);
 #endif

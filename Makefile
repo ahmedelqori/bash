@@ -16,7 +16,10 @@ SRC = ./src/minishell.c \
 	  ./src/parsing/ft_add_space_to_input.c\
 	  ./src/parsing/ft_add_space_to_output.c\
 	  ./src/parsing/ft_add_space_to_pipe.c\
-
+	  ./src/struct/pipe/ft_pipe.c\
+	  ./src/struct/tree/ft_tree.c\
+	  ./src/execution/ft_execution.c\
+	  ./src/execution/ft_handle_child.c\
 
 OBJ = ${SRC:.c=.o}
 all: ${NAME}

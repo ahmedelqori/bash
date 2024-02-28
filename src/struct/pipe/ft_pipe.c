@@ -6,7 +6,7 @@
 /*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:17:24 by meedivo           #+#    #+#             */
-/*   Updated: 2024/02/27 14:18:35 by meedivo          ###   ########.fr       */
+/*   Updated: 2024/02/28 13:31:54 by meedivo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_list_pipe	*ft_create_list(char	**arr)
 	{		
 		root = NULL;
 		while (arr[i] && arr[i][0] != PIPE)
-			ft_tree_insert(&root, ft_tree_new(arr[i++]));
+			ft_tree_insert(&root, ft_new_tree(arr[i++]));
 		ft_lstpipe_add_back(&head,ft_lstpipe_new(root));
 		if (arr[i])
 			i++;

@@ -6,7 +6,7 @@
 /*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 12:45:08 by ael-qori          #+#    #+#             */
-/*   Updated: 2024/02/27 14:32:26 by meedivo          ###   ########.fr       */
+/*   Updated: 2024/02/28 13:35:46 by meedivo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ void	minishell(t_env  *env)
 		(void)input;
 		add_history(input);
 		current = ft_parsing(input);
-		print_arr(current);
+		ft_execution(current);
+		// print_arr(current);
 		ft_free_arr(current);
 	}
 }

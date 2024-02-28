@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper_2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-qori <ael-qori@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:13:06 by ael-qori          #+#    #+#             */
-/*   Updated: 2024/02/26 10:40:48 by ael-qori         ###   ########.fr       */
+/*   Updated: 2024/02/28 13:08:30 by meedivo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,32 @@ char	*ft_get_all_lines(char *input)
 		free(current);	
 	}
 	return (input);
+}
+
+void	tree_help(t_tree *tree, t_list **list, int *output,int *input )
+{
+	t_tree	*root;
+	int fd;
+
+	root = (tree);
+	if (!root)
+		return;
+	if (root->command[0] == OUTPUT || root->command[0] == INPUT)
+	{
+		if (root->left && root->command[0] == OUTPUT)
+		{
+			fd = open(root->left->command,O_CREAT|O_WRONLY|O_TRUNC,0777);
+			if (fd != -1)
+				*output = fd;
+		}
+		if (root->left && root->command[0] == INPUT)
+		{
+			fd = open(root->left->command,O_RDONLY,0777);
+			if (fd != -1)
+				*input = fd;
+		}
+	}
+	if (root->command[0] != OUTPUT && root->command[0] != INPUT)
+		ft_lstadd_back(list,ft_lstnew(root->command));
+	tree_help(tree->right, list,output, input);
 }
