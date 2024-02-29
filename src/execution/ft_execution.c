@@ -6,7 +6,7 @@
 /*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:00:27 by meedivo           #+#    #+#             */
-/*   Updated: 2024/02/28 13:38:45 by meedivo          ###   ########.fr       */
+/*   Updated: 2024/02/29 16:36:12 by meedivo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void    ft_close_all_files(int *fd, int *files)
     close(files[3]);
 }
 
-void    ft_start_execution(t_list_pipe *list, int *fd)
+void    ft_start_execution(t_list_pipe *list, int *fd, t_env **env)
 {
     t_list  *lst;
     char    **args;
@@ -66,7 +66,7 @@ void    ft_start_execution(t_list_pipe *list, int *fd)
 	if (files[0] != files[2])
 		dup2(files[0] , STDIN_FILENO);
     if (pid == 0)
-        ft_handle_child(list, files, args ,fd);
+        ft_handle_child(list, files, args ,fd ,env);
     else
     {
         wait(NULL);
@@ -76,7 +76,7 @@ void    ft_start_execution(t_list_pipe *list, int *fd)
     }
 }
 
-void    ft_execution(char **arr)
+void    ft_execution(char **arr ,t_env **env)
 {
     int         fd[2];
     t_list_pipe *list;
@@ -89,7 +89,7 @@ void    ft_execution(char **arr)
     while (list)
     {
         pipe(fd);
-        ft_start_execution(list, fd);
+        ft_start_execution(list, fd ,env);
         list = list->next;
     }
     dup2(org_stdin, STDIN_FILENO);

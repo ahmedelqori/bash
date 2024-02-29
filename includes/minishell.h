@@ -6,7 +6,7 @@
 /*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 12:41:55 by ael-qori          #+#    #+#             */
-/*   Updated: 2024/02/28 13:35:08 by meedivo          ###   ########.fr       */
+/*   Updated: 2024/02/29 16:36:55 by meedivo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void    ft_tree_insert(t_tree **root, t_tree *new);
 
 t_list_pipe	*ft_create_list(char	**arr);
 
-void    ft_execution(char **arr);
-void    ft_handle_child(t_list_pipe *lst, int *files , char **args, int *fd);
+void    ft_execution(char **arr ,t_env **env);
+void    ft_handle_child(t_list_pipe *lst, int *files , char **args, int *fd, t_env **env);
 void    ft_close_all_files(int *fd, int *files);
 #endif
