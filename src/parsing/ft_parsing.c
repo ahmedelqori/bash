@@ -6,7 +6,7 @@
 /*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 13:59:23 by ael-qori          #+#    #+#             */
-/*   Updated: 2024/02/27 14:21:06 by meedivo          ###   ########.fr       */
+/*   Updated: 2024/02/29 09:01:08 by meedivo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,29 @@ char	**ft_all_functions(char *s)
 	return (arr);
 }
 
+char	*ft_get_all_command(char *input)
+{
+	char	*current;
+	char	*tmp;
+
+	while (ft_strtrim(input, " ")[ft_strlen(ft_strtrim(input, " ")) - 1] == '|')
+	{
+		tmp = readline("> ");
+		if (tmp == NULL)
+			break;
+		current = input;
+		input = ft_strjoin(current, tmp);
+		free(tmp);
+		free(current);	
+	}
+	return (input);
+}
+
 char	**ft_parsing(char *input)
 {
 	char	*current;
+	char	*current1;
+	char	*tmp;
 	int 	res;
 
 	res = filter_space_redirections(input);
@@ -83,6 +103,13 @@ char	**ft_parsing(char *input)
 		current = ft_get_all_lines(input);
 		filter_space_redirections(current);
 		return (ft_all_functions(current));
+	}
+	tmp = ft_strtrim(input, " ");
+	if (tmp[ft_strlen(tmp) - 1] == '|')
+	{
+		current1 = ft_get_all_command(input);
+		filter_space_redirections(current1);
+		return (ft_all_functions(current1));	
 	}
 	current = ft_strdup(input);
 	free(input);
