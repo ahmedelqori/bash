@@ -6,7 +6,7 @@
 /*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:20:18 by meedivo           #+#    #+#             */
-/*   Updated: 2024/03/01 09:10:10 by meedivo          ###   ########.fr       */
+/*   Updated: 2024/03/01 09:12:15 by meedivo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ char    *ft_get_right_path(t_env *env ,char *arg)
         tmp = ft_strjoin(current, arg);
         if (access(tmp, F_OK & X_OK ) != -1)
         {
-            printf("tmp: %s\n",tmp);
             ft_free_arr(arr);
             return (tmp);
         }
@@ -48,7 +47,6 @@ char    *ft_get_right_path(t_env *env ,char *arg)
     tmp = ft_strjoin(current, arg + 2);
     free(current);
     ft_free_arr(arr);
-    printf(" === %s ==\n",tmp);
     return (tmp);
 }
 

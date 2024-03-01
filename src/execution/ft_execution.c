@@ -6,7 +6,7 @@
 /*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:00:27 by meedivo           #+#    #+#             */
-/*   Updated: 2024/02/29 16:36:12 by meedivo          ###   ########.fr       */
+/*   Updated: 2024/03/01 15:55:12 by meedivo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,23 @@ void    ft_start_execution(t_list_pipe *list, int *fd, t_env **env)
     int     files[4];
     int     pid;
 
-    lst = NULL;
-    ft_initialize_files(files);
-    tree_help(list->root, &lst, &files[1],&files[0]);
-    args = ft_get_all_arguments(lst);
     pid = fork();
 	if (files[0] != files[2])
 		dup2(files[0] , STDIN_FILENO);
     if (pid == 0)
+    {
+        lst = NULL;
+        ft_initialize_files(files);
+        tree_help(list->root, &lst, &files[1],&files[0]);
+        args = ft_get_all_arguments(lst);
         ft_handle_child(list, files, args ,fd ,env);
+    }
     else
     {
+        lst = NULL;
+        ft_initialize_files(files);
+        tree_help(list->root, &lst, &files[1],&files[0]);
+        args = ft_get_all_arguments(lst);
         wait(NULL);
         if (list->next)
             dup2(fd[0], STDIN_FILENO);
