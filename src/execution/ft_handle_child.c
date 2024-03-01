@@ -6,7 +6,7 @@
 /*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:20:18 by meedivo           #+#    #+#             */
-/*   Updated: 2024/02/29 16:47:23 by meedivo          ###   ########.fr       */
+/*   Updated: 2024/03/01 09:10:10 by meedivo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,34 +18,38 @@ char    *ft_get_right_path(t_env *env ,char *arg)
     char    *value;
     char    *tmp;
     char    *current;
+    char    *pwd;
     int     i;
 
     i = 0;
     while (env)
     {
         if (ft_strcmp(env->key, "PATH") == 0)
-        {
             value = env->value;
-            break;
-        }
+        if (ft_strcmp(env->key, "PWD") == 0)
+            pwd = env->value ;
         env = env->next;
     }
     arr = ft_split(value , ':');
-    free(value);
     while (arr[i])
     {
         current = ft_strjoin(arr[i], "/");
         tmp = ft_strjoin(current, arg);
         if (access(tmp, F_OK & X_OK ) != -1)
         {
+            printf("tmp: %s\n",tmp);
             ft_free_arr(arr);
             return (tmp);
         }
         i++;
         free(tmp);
     }
+    current = ft_strjoin(pwd, "/");
+    tmp = ft_strjoin(current, arg + 2);
+    free(current);
     ft_free_arr(arr);
-    return (NULL);
+    printf(" === %s ==\n",tmp);
+    return (tmp);
 }
 
 void    ft_handle_child(t_list_pipe *lst, int *files , char **args, int *fd, t_env **env)
