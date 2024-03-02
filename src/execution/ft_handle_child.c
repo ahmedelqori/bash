@@ -6,7 +6,7 @@
 /*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:20:18 by meedivo           #+#    #+#             */
-/*   Updated: 2024/03/02 09:43:42 by meedivo          ###   ########.fr       */
+/*   Updated: 2024/03/02 18:53:18 by meedivo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char    *ft_get_right_path(t_env *env ,char *arg)
     return (tmp);
 }
 
-void    ft_handle_child(t_list_pipe *lst, int *files , char **args, int *fd, t_env **env)
+void    ft_handle_child(t_list_pipe *lst, int *files , char **args, int *fd, t_env **env,char **env_arr)
 {
     char *path;
 
@@ -65,7 +65,7 @@ void    ft_handle_child(t_list_pipe *lst, int *files , char **args, int *fd, t_e
     if (files[1] != files[3])
         dup2(files[1], STDOUT_FILENO);
     ft_close_all_files(fd,files);
-	if (execve(path, args, NULL) < 0)
+	if (execve(path, args, env_arr) < 0)
     {
         perror("ERROR:\t");
         exit(1);

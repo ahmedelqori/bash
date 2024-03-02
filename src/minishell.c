@@ -6,7 +6,7 @@
 /*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 12:45:08 by ael-qori          #+#    #+#             */
-/*   Updated: 2024/02/29 16:36:21 by meedivo          ###   ########.fr       */
+/*   Updated: 2024/03/02 18:52:15 by meedivo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	print_arr(char **arr)
 	printf("\n");
 }
 
-void	minishell(t_env  *env)
+void	minishell(t_env  *env ,char **env_arr)
 {
 	char	*input;
 	char	**current;
@@ -45,7 +45,7 @@ void	minishell(t_env  *env)
 		if (input[0] != '\0')
 			add_history(input);
 		current = ft_parsing(input);
-		ft_execution(current , &env);
+		ft_execution(current , &env,env_arr);
 		// print_arr(current);
 		ft_free_arr(current);
 	}
@@ -58,7 +58,7 @@ int main(int ac , char **av, char **env_arr)
 	(void)ac;
 	(void)av;
 	env = ft_create_env(env_arr);
-	minishell(env);
+	minishell(env,env_arr);
 	ft_clear_env(&env);
 	return 0;
 }

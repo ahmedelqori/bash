@@ -6,7 +6,7 @@
 /*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:00:27 by meedivo           #+#    #+#             */
-/*   Updated: 2024/03/02 14:02:42 by meedivo          ###   ########.fr       */
+/*   Updated: 2024/03/02 18:52:51 by meedivo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void    ft_close_all_files(int *fd, int *files)
     close(files[3]);
 }
 
-void    ft_start_execution(t_list_pipe *list, int *fd, t_env **env )
+void    ft_start_execution(t_list_pipe *list, int *fd, t_env **env,char **env_arr )
 {
     t_list  *lst;
     char    **args;
@@ -66,7 +66,7 @@ void    ft_start_execution(t_list_pipe *list, int *fd, t_env **env )
 	if (files[0] != files[2])
 		dup2(files[0] , STDIN_FILENO);
     if (pid == 0)
-        ft_handle_child(list, files, args ,fd ,env);
+        ft_handle_child(list, files, args ,fd ,env, env_arr);
     else
     {
         if (list->next)
@@ -75,7 +75,7 @@ void    ft_start_execution(t_list_pipe *list, int *fd, t_env **env )
     }   
 }
 
-void    ft_execution(char **arr ,t_env **env)
+void    ft_execution(char **arr ,t_env **env, char **env_arr)
 {
     int         fd[2];
     t_list_pipe *list;
@@ -98,7 +98,7 @@ void    ft_execution(char **arr ,t_env **env)
     while (list)
     {
         pipe(fd);
-        ft_start_execution(list, fd ,env) ;
+        ft_start_execution(list, fd ,env, env_arr) ;
         list = list->next;
     }
     dup2(org_stdin, STDIN_FILENO);
