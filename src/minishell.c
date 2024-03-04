@@ -6,7 +6,7 @@
 /*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 12:45:08 by ael-qori          #+#    #+#             */
-/*   Updated: 2024/03/02 18:52:15 by meedivo          ###   ########.fr       */
+/*   Updated: 2024/03/04 14:06:47 by meedivo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ int main(int ac , char **av, char **env_arr)
 	(void)av;
 	env = ft_create_env(env_arr);
 	minishell(env,env_arr);
+
+
+	
 	ft_clear_env(&env);
 	return 0;
 }

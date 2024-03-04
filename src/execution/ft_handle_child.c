@@ -6,7 +6,7 @@
 /*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:20:18 by meedivo           #+#    #+#             */
-/*   Updated: 2024/03/02 18:53:18 by meedivo          ###   ########.fr       */
+/*   Updated: 2024/03/04 19:43:06 by meedivo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void    ft_handle_child(t_list_pipe *lst, int *files , char **args, int *fd, t_e
     ft_close_all_files(fd,files);
 	if (execve(path, args, env_arr) < 0)
     {
-        perror("ERROR:\t");
+        perror("execve:\t");
         exit(1);
     }
 }
