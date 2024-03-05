@@ -6,7 +6,7 @@
 /*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:00:27 by meedivo           #+#    #+#             */
-/*   Updated: 2024/03/02 18:52:51 by meedivo          ###   ########.fr       */
+/*   Updated: 2024/03/05 13:47:07 by meedivo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void    ft_execution(char **arr ,t_env **env, char **env_arr)
     org_stdin = dup(STDIN_FILENO);
     org_stdout = dup(STDOUT_FILENO);
     list = ft_create_list(arr);
+    ft_handle_heredoc(&list);
     tmp = list;
     while (tmp)
     {

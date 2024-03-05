@@ -6,7 +6,7 @@
 /*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:13:06 by ael-qori          #+#    #+#             */
-/*   Updated: 2024/03/04 19:53:56 by meedivo          ###   ########.fr       */
+/*   Updated: 2024/03/05 13:47:03 by meedivo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	*ft_get_all_lines(char *input)
 void	tree_help(t_tree *tree, t_list **list, int *output,int *input )
 {
 	t_tree	*root;
-	char	*line;
+	// char	*line;
 	int fd;
 
 	root = (tree);
@@ -92,21 +92,21 @@ void	tree_help(t_tree *tree, t_list **list, int *output,int *input )
 				if (fd != -1)
 					*input = fd;
 			}
-			if (ft_strcmp(root->command, HERE_DOC) == 0)
-			{
-				char *new_str = ft_get_unique_file();
-				int new_file = open(new_str, O_CREAT| O_RDWR,0777);
-				while ((line = readline("HereDoc $> ")))
-				{
-					if (ft_strcmp(line, root->left->command) == 0)
-						break;
-					write(new_file, line, ft_strlen(line));
-					write(new_file, "\n", 1);
-				}
-				close(new_file);
-				*input = open(new_str,O_RDONLY,0777);
-				unlink(new_str);
-			}
+			// if (ft_strcmp(root->command, HERE_DOC) == 0)
+			// {
+			// 	char *new_str = ft_get_unique_file();
+			// 	int new_file = open(new_str, O_CREAT| O_RDWR,0777);
+			// 	while ((line = readline("HereDoc $> ")))
+			// 	{
+			// 		if (ft_strcmp(line, root->left->command) == 0)
+			// 			break;
+			// 		write(new_file, line, ft_strlen(line));
+			// 		write(new_file, "\n", 1);
+			// 	}
+			// 	close(new_file);
+			// 	*input = open(new_str,O_RDONLY,0777);
+			// 	unlink(new_str);
+			// }
 		}
 	}
 	if (root->command[0] != OUTPUT && root->command[0] != INPUT)

@@ -6,7 +6,7 @@
 /*   By: meedivo <meedivo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 12:41:55 by ael-qori          #+#    #+#             */
-/*   Updated: 2024/03/02 18:53:32 by meedivo          ###   ########.fr       */
+/*   Updated: 2024/03/05 13:35:01 by meedivo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,9 @@ void    ft_signals(void);
 void    ft_free_arr(char **arr);
 /*========================= PARSING =========================*/
 int	filter_space_redirections(char *s);
-
+char	*ft_get_unique_file(void);
 char	**ft_parsing(char *input);
+void    ft_handle_heredoc(t_list_pipe **lst);
 /*========================= HELPER =========================*/
 int	ft_is_redirection(char c);
 int	ft_get_index_of_next_quotes(char *s, char c,int i);

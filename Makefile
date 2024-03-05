@@ -20,6 +20,7 @@ SRC = ./src/minishell.c \
 	  ./src/struct/tree/ft_tree.c\
 	  ./src/execution/ft_execution.c\
 	  ./src/execution/ft_handle_child.c\
+	  ./src/execution/ft_handle_heredoc.c\
 
 OBJ = ${SRC:.c=.o}
 all: ${NAME}
